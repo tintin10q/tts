@@ -1,0 +1,50 @@
+[login]
+language = "en-GB"
+voice = "en-GB-OliverNeural"
+speed = 1.20
+pitch = 0.80
+text = """Welcome to Wievibe, the app that brings people together!
+To get started enter your mobile phone number and then press submit.
+You'll receive a personal code via SMS, enter the code on the next page and press submit again.
+Don’t share your code with others, it's like a secret handshake between you and Wievibe."""
+
+[home]
+language = "en-GB"
+voice = "en-GB-OliverNeural"
+speed = 1.18
+pitch = 0.82
+text = """
+Welcome to the Wievibe home page, get ready to explore your musical timeline!
+This page showcases all the tracks you and your one-on-one and group matches like.
+You can either play or preview any track you see listed by short tapping or long tapping the album art.
+Go ahead, try it! Wievibe is ready to take your music sharing to the next level!"""
+
+[people]
+language = "en-GB"
+speed = 1.18
+pitch = 0.82
+voice = "en-GB-OliverNeural"
+text = """
+Here you'll find all your matches! You've got the Duo match tab for one-on-one matches and the Group tab for all your group matches.
+We’ve already created your first duo match with us. Click on the Team Wievibe icon and find out if our music taste is on point.
+
+Or, just go ahead and make some matches of your own by tapping on the match icon at the bottom right of the screen."""
+
+[create_match]
+language = "en-GB"
+speed = 1.18
+pitch = 0.80
+voice = "en-GB-OliverNeural"
+text = """This is where you invite people to match with you.
+You can share a link, scan their QR code or let them scan yours.  Try sending a Duo Match invite to a friend.
+Once they sign up, you’ll find them on the Duo Match tab on the People screen."""
+
+[profile]
+language = "en-GB"
+voice = "en-GB-OliverNeural"
+speed = 1.20
+pitch = 0.80
+text = """This is your profile and account settings page.
+Here you can create your big head avatar, manage your account or join the Wievibe World Discord.
+Here you can also subscribe to our Wievibe Together service, giving you updates from all of your friends.
+We hope you have a blast using Wievibe. If you need anything, just drop us a message on Discord. """

@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "azure-tts"
+version = "0.1.0"
+description = ""
+authors = ["Quinten <tintin10q@hotmail.com>"]
+readme = "README.md"
+packages = [{include = "tts.py"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+toml = "^0.10.2"
+aiofiles = "^22.1.0"
+httpx = "^0.23.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+tts = "tts:main"
+voices = "tts:listvoices"
+2ogg = "tts:output2ogg"
+clean = "tts:clean"
+cleanogg = "tts:cleanogg"
+cleanwav = "tts:cleanwav"
+generate = "tts:generate"
+
+

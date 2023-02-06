@@ -3,3 +3,4 @@ azure_secret.json
 output/*
 voices.json
 poetry.lock
+__pycache__
