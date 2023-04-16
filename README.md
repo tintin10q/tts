@@ -1,4 +1,4 @@
-# What?
+# Easy azure tts
 
 An easy to use tts (text to speech) using azure.
 
