@@ -25,7 +25,7 @@ if (not os.path.exists("output")):
 
 SSML = """
 <speak version='1.0' xml:lang='{language_code}'>
-    <voice xml:lang='{language_code}' name='{voice_name}'>
+    <voice xml:lang='{language_code}' name='{voice_name}' style='{style}'>
         <prosody pitch='{pitch}%' rate='{speed}%'>
             {text}
         </prosody>
@@ -43,34 +43,40 @@ SSML = """
 # """
 
 
-def to_speech(text: str, *, language_code: str, voice_name: str, speed: float, pitch: float) -> bytes:
+def to_speech(text: str, *, language_code: str, voice_name: str, speed: float, pitch: float, style: str = None) -> bytes:
+    style = style or 'neutral'
     response = httpx.post("https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1",
                           headers={"Ocp-Apim-Subscription-Key": azure_speech_key,
                                    "Content-Type": "application/ssml+xml",
                                    "X-Microsoft-OutputFormat": "riff-16khz-16bit-mono-pcm",
                                    "User-Agent": "shorts"},
 
-                          data=SSML.format(text=text, language_code=language_code, voice_name=voice_name, speed=speed, pitch=pitch).encode("utf-8"))  # Encode to utf-8 for all the special characters
+                          data=SSML.format(text=text, language_code=language_code, voice_name=voice_name, speed=speed, pitch=pitch, style=style).encode("utf-8"))  # Encode to utf-8 for all the special characters
     return response.content
 
 
-async def create_speech_file(filename: str, text: str, *, language_code: str, voice_name: str, pitch: float, speed: float):
+async def create_speech_file(filename: str, text: str, *, language_code: str, voice_name: str, pitch: float, speed: float, style: str = None):
+    style = style or 'neutral'
     async with httpx.AsyncClient() as client:
         response = await client.post("https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1",
                                      headers={"Ocp-Apim-Subscription-Key": azure_speech_key,
                                               "Content-Type": "application/ssml+xml",
                                               "X-Microsoft-OutputFormat": "riff-16khz-16bit-mono-pcm",
                                               "User-Agent": "shorts"},
-                                     data=SSML.format(text=text, language_code=language_code, voice_name=voice_name, pitch=pitch, speed=speed).encode("utf-8"))  # Encode to utf-8 for all the special characters
+                                     data=SSML.format(text=text, language_code=language_code, voice_name=voice_name, pitch=pitch, speed=speed, style=style).encode("utf-8"))  # Encode to utf-8 for all the special characters
         speech = response.content
+        if (not speech):
+            raise RuntimeError(f"No data returned from azure. Status: {response.status_code}")
         print(f"Writing {filename}.wav")
         async with aiofiles.open(f"output/{filename}.wav", "wb+") as f:
             await f.write(speech)
 
+import re
+valid_name = re.compile(r"^[a-zA-Z0-9_\-]+$")
 
 def main():
     futures = []
-    with open("speech.toml") as f:
+    with open("speechwevybe.toml") as f:
         texts = toml.load(f)
         for filename, tts_data in texts.items():
             text = tts_data.get("text", None)
@@ -78,8 +84,9 @@ def main():
             language_code = tts_data.get("language", None)
             pitch = float(tts_data.get("pitch", 1.0))
             speed = float(tts_data.get("speed", 1.0))
+            style = tts_data.get("style", 'neutral')
             # Check if the file name is safe
-            if not filename.isidentifier():
+            if not valid_name.match(filename):
                 print(f"Skipping {filename} because it is not a valid file name")
                 continue
             if not text:
@@ -92,7 +99,7 @@ def main():
             # continue
             futures.append(
                 asyncio.ensure_future(
-                    create_speech_file(filename, text, language_code=language_code, voice_name=voice_name, pitch=pitch, speed=speed)))
+                    create_speech_file(filename, text, language_code=language_code, voice_name=voice_name, pitch=pitch, speed=speed, style=style)))
     loop = asyncio.get_event_loop()
     loop.run_until_complete(asyncio.gather(*futures))
 
@@ -117,6 +124,9 @@ def listvoices():
 def output2ogg():
     os.system("cd output && for f in *.wav; do ffmpeg -i \"$f\" -acodec libvorbis \"${f%.wav}.ogg\"; done")
 
+def output2mp3():
+    os.system("cd output && for f in *.wav; do ffmpeg -i \"$f\" -acodec libmp3lame \"${f%.wav}.mp3\"; done")
+
 
 def cleanwav():
     os.system("cd output ; rm -v *.wav")
@@ -125,15 +135,20 @@ def cleanwav():
 def cleanogg():
     os.system("cd output ; rm -v *.ogg")
 
+def cleanmp3():
+    os.system("cd output ; rm -v *.mp3")
+
 
 def clean():
     """Cleans the output folder"""
     cleanogg()
     cleanwav()
+    cleanmp3()
 
 
 def generate():
     """Generates the speech files"""
     main()
     output2ogg()
+    output2mp3()
     cleanwav()
