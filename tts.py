@@ -76,7 +76,7 @@ valid_name = re.compile(r"^[a-zA-Z0-9_\-]+$")
 
 def main():
     futures = []
-    with open("speechwevybe.toml") as f:
+    with open("speech.toml") as f:
         texts = toml.load(f)
         for filename, tts_data in texts.items():
             text = tts_data.get("text", None)

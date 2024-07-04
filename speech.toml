@@ -13,7 +13,7 @@ language = "en-GB"
 voice = "en-GB-OliverNeural"
 speed = 1.18
 pitch = 0.82
-text = """Welcome to the feed, get ready to explore your musical timeline! This page showcases all the content you and your friends have liked. You can preview any track or podcast you see listed by tapping the album art.   Go ahead, try it!  If you ever want to listen to this or any other help message again, just click on the help icon at the top right of the screen.  """
+text = """Welcome to your feed, get ready to explore your musical timeline! This page showcases all the content you and your friends have liked. You can preview any track or podcast you see listed by tapping the album art.   Go ahead, try it!  If you ever want to listen to this or any other help message again, just click on the help icon at the top right of the screen.  """
 
 [profile]
 language = "en-GB"
