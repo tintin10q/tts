@@ -1,0 +1,76 @@
+[login]
+language = "en-GB"
+voice = "en-GB-OliverNeural"
+speed = 1.20
+pitch = 0.80
+text = """Welcome to Wievibe, the app that brings people together!
+        To get started enter your mobile phone number and then press submit.
+        You'll receive a text with a personal code , enter the code on the next page and press submit again.
+        Don’t share your code with others, it's like a secret handshake between you and us."""
+
+[home]
+language = "en-GB"
+voice = "en-GB-OliverNeural"
+speed = 1.18
+pitch = 0.82
+text = """Welcome to the feed, get ready to explore your musical timeline! This page showcases all the content you and your friends have liked. You can preview any track or podcast you see listed by tapping the album art.   Go ahead, try it!  If you ever want to listen to this or any other help message again, just click on the help icon at the top right of the screen.  """
+
+[profile]
+language = "en-GB"
+voice = "en-GB-OliverNeural"
+speed = 1.20
+pitch = 0.80
+text = """ Welcome to your profile and account settings page.
+Here you can customize your experience and stay up-to-date with all your friends.
+Simply turn on push notifications to receive real-time updates on your phone when one of your friends like a new track, even when you are not using the app!
+Want to make your profile stand out? Create your own unique big head avatar!
+ We hope you have an amazing time. If you need any assistance or have any feedback, please don't hesitate to join our Discord and drop us a message. We'd love to hear from you! """
+
+[people]
+language = "en-GB"
+speed = 1.18
+pitch = 0.82
+voice = "en-GB-OliverNeural"
+text = """Here you'll find all your matches!
+If you like someone’s taste in music and want to keep up-to-date with the tracks they like, tap the eye next to their name.
+We’ve already created your first duo match with us!  Click on it and find out if our music taste is on point.
+Or, make some matches of your own by tapping on the match icon at the bottom right of the screen."""
+
+
+[share-duo]
+language = "en-GB"
+speed = 1.18
+pitch = 0.80
+voice = "en-GB-OliverNeural"
+text = """This is where you invite people to match with you.
+        You can share a link, scan their QR code or let them scan yours.  Try sending a Pair invite to a friend.
+        Once they sign up, you’ll find them on the People screen."""
+
+[people-group]
+language = "en-GB"
+speed = 1.18
+pitch = 0.82
+voice = "en-GB-OliverNeural"
+text = """If you're part of a group, this Groups tab is where you want to be. Here you can see a list of all the groups you've joined. Click on the group icon to view all the music tracks that group members have liked. Use the pull-down menu to add or remove members, or even leave the group if you no longer wish to be part of it.   You can also mute updates from group members if their taste in music is not quite on point! """
+
+[share-group]
+language = "en-GB"
+speed = 1.20
+pitch = 0.80
+voice = "en-GB-OliverNeural"
+text = """Here you can create matches with groups of people. First, enter a name for your group.
+Press submit and then share your personal group invite link to as many people as you like.
+Or, you can ask them to scan the QR code.  Try sending a Group match invite to a friend.
+Once they join, you’ll find them under the Groups tab."""
+
+[together]
+language = "en-GB"
+speed = 1.18
+pitch = 0.80
+voice = "en-GB-OliverNeural"
+text = """Press "join Wievibe together" to get unlimited updates from your friends.
+This premium subscription offers a range of exclusive features, including unlimited forever keys and access to the dedicated Wievibe World community.
+You can cancel your subscription at any time.
+"""
+
+
